@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useUserStore } from "@/store/modules/user";
-import { StarFilled, VideoCamera, View, ChatDotRound } from '@element-plus/icons-vue'
+import {
+  StarFilled,
+  VideoCamera,
+  View,
+  ChatDotRound,
+} from "@element-plus/icons-vue";
 
 const userStore = useUserStore();
 const username = userStore.userInfo?.nickname || userStore.userInfo?.username;
