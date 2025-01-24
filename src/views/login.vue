@@ -2,7 +2,7 @@
   <div class="login-container">
     <el-card class="login-card">
       <template #header>
-        <h2 class="login-title">哔哩哔哩</h2>
+        <h2 class="login-title">后台管理</h2>
         <p class="login-subtitle">欢迎回来</p>
       </template>
       <el-form
