@@ -32,26 +32,68 @@ const routes: RouteRecordRaw[] = [
                 path: 'videos',
                 name: 'Videos',
                 component: () => import('@/views/videos/index.vue'),
+                redirect: { name: 'VideoUpload' },
                 meta: {
-                    title: '视频列表',
+                    title: '视频管理',
                     requiresAuth: true
-                }
-            },
-            {
-                path: 'videos/upload',
-                name: 'VideoUpload',
-                component: () => import('@/views/videos/upload.vue'),
-                meta: {
-                    title: '上传视频',
-                    requiresAuth: true
-                }
+                },
+                children: [
+                    {
+                        path: 'list',
+                        name: 'VideoList',
+                        component: () => import('@/views/videos/list.vue'),
+                        meta: {
+                            title: '视频列表',
+                            requiresAuth: true
+                        }
+                    },
+                    {
+                        path: 'upload',
+                        name: 'VideoUpload',
+                        component: () => import('@/views/videos/upload.vue'),
+                        meta: {
+                            title: '上传视频',
+                            requiresAuth: true
+                        }
+                    }
+                ]
             },
             {
                 path: 'users',
                 name: 'Users',
                 component: () => import('@/views/users/index.vue'),
+                redirect: { name: 'UserList' },
                 meta: {
                     title: '用户管理',
+                    requiresAuth: true
+                },
+                children: [
+                    {
+                        path: 'list',
+                        name: 'UserList',
+                        component: () => import('@/views/users/list.vue'),
+                        meta: {
+                            title: '用户列表',
+                            requiresAuth: true
+                        }
+                    },
+                    {
+                        path: 'permissions',
+                        name: 'Permissions',
+                        component: () => import('@/views/users/permissions.vue'),
+                        meta: {
+                            title: '权限管理',
+                            requiresAuth: true
+                        }
+                    }
+                ]
+            },
+            {
+                path: 'settings',
+                name: 'Settings',
+                component: () => import('@/views/settings/setting.vue'),
+                meta: {
+                    title: '系统设置',
                     requiresAuth: true
                 }
             }
