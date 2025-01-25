@@ -75,7 +75,7 @@ const handleUpload = () => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .upload-container {
   padding: 20px;
   max-width: 800px;
