@@ -51,7 +51,7 @@ const handleStatusChange = (row: any) => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .users-container {
   padding: 20px;
 }

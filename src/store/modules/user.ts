@@ -28,7 +28,7 @@ export const useUserStore = defineStore(
         };
 
         // 登录
-        const login = async (username: string, password: string) => {
+        const login = async (username: string, password: string, remember: boolean = false) => {
             try {
                 // 模拟登录成功
                 const mockToken = 'mock-token-' + Date.now();
@@ -42,6 +42,15 @@ export const useUserStore = defineStore(
                     createTime: new Date().toISOString(),
                     updateTime: new Date().toISOString()
                 };
+
+                // 如果记住我，则将信息存储到本地
+                if (remember) {
+                    localStorage.setItem('username', username);
+                    localStorage.setItem('remember', 'true');
+                } else {
+                    localStorage.removeItem('username');
+                    localStorage.removeItem('remember');
+                }
 
                 setToken(mockToken);
                 setUserInfo(mockUserInfo);

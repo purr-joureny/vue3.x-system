@@ -1,0 +1,59 @@
+/* 导入组件样式 */
+@import './login.css';
+@import './home.css';
+
+/* 全局样式 */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  --transition-normal: all 0.3s ease;
+}
+
+/* 全局动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Element Plus 全局样式优化 */
+.el-card {
+  border-radius: 16px !important;
+  overflow: hidden;
+}
+
+.el-button--primary {
+  background: var(--primary-gradient) !important;
+  border: none !important;
+  transition: var(--transition-normal) !important;
+}
+
+.el-button--primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4) !important;
+}
+
+.el-input__wrapper {
+  border-radius: 8px !important;
+}
+
+/* 响应式布局辅助类 */
+@media (max-width: 768px) {
+  .el-card {
+    margin-bottom: 16px;
+  }
+}

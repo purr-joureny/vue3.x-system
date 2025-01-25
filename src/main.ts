@@ -5,6 +5,7 @@ import pinia from './store'
 
 // Import global styles
 import './assets/styles/reset.scss'
+import './styles/index.css'
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
