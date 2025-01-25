@@ -1,38 +1,19 @@
-import axios from 'axios';
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import { createRequest, Request } from '@vue3-system/axios';
 import { ElMessage } from 'element-plus';
 import router from '@/router';
-import { ENV } from './env';
 
-// 创建 axios 实例
-const service: AxiosInstance = axios.create({
-    baseURL: ENV.VITE_API_BASE_URL,  // 从环境变量获取 API 基础 URL
-    timeout: 15000, // 请求超时时间
-    headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-    },
-});
+// 创建请求实例
+const requestInstance = createRequest({
+    baseURL: import.meta.env.VITE_API_BASE_URL,
+    timeout: 15000,
+}) as Request;
 
-// 请求拦截器
-service.interceptors.request.use(
-    (config: InternalAxiosRequestConfig) => {
-        // 从 localStorage 获取 token
-        const token = localStorage.getItem('token');
-        if (token) {
-            // 添加 token 到请求头
-            config.headers['Authorization'] = `Bearer ${token}`;
-        }
-        return config;
-    },
-    (error: any) => {
-        console.error('Request error:', error);
-        return Promise.reject(error);
-    }
-);
+// 获取请求实例
+const service = requestInstance.getInstance();
 
-// 响应拦截器
+// 添加响应拦截器处理业务逻辑
 service.interceptors.response.use(
-    (response: AxiosResponse) => {
+    (response) => {
         const { code, message, data } = response.data;
 
         // 根据自定义错误码判断请求是否成功
@@ -45,7 +26,7 @@ service.interceptors.response.use(
             return Promise.reject(new Error(message || '操作失败'));
         }
     },
-    (error: any) => {
+    (error: { response: { status: any; }; message: any; }) => {
         const { status } = error.response || {};
 
         // 处理 HTTP 错误状态
@@ -74,24 +55,7 @@ service.interceptors.response.use(
     }
 );
 
-// 封装 GET 请求
-export const get = <T>(url: string, params?: any, config?: AxiosRequestConfig): Promise<T> => {
-    return service.get(url, { params, ...config });
-};
-
-// 封装 POST 请求
-export const post = <T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> => {
-    return service.post(url, data, config);
-};
-
-// 封装 PUT 请求
-export const put = <T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> => {
-    return service.put(url, data, config);
-};
-
-// 封装 DELETE 请求
-export const del = <T>(url: string, config?: AxiosRequestConfig): Promise<T> => {
-    return service.delete(url, config);
-};
+// 导出请求方法
+export const { get, post, put, delete: del } = service;
 
 export default service;

@@ -54,9 +54,9 @@ export const useUserStore = defineStore(
         // 获取用户信息
         const getUserInfo = async () => {
             try {
-                const { data } = await userApi.getUserInfo();
-                setUserInfo(data);
-                return data;
+                const response = await userApi.getUserInfo();
+                setUserInfo(response.data.data);
+                return response.data;
             } catch (error) {
                 throw error;
             }
