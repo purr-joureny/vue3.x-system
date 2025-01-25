@@ -83,18 +83,43 @@ const handleCommand = (command: string) => {
 
 <style lang="scss" scoped>
 .header {
+  //   border-radius: 0 0 16px 16px;
+  //   margin: 0 16px 16px;
   background-color: #ffffff;
-  border-bottom: 1px solid #f0f0f0;
+  border: 1px solid #f0f0f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 56px;
   padding: 0 20px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--el-color-primary),
+      var(--el-color-success)
+    );
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
 
   &:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+
+    &::before {
+      transform: translateY(0);
+    }
   }
 
   .left {
@@ -103,26 +128,49 @@ const handleCommand = (command: string) => {
     gap: 16px;
 
     .collapse-btn {
+      border-radius: 12px;
       cursor: pointer;
       font-size: 18px;
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 6px;
+      border-radius: 8px;
       color: #666;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       transform-origin: center;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: var(--el-color-primary-light-9);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.4s ease-out,
+          height 0.4s ease-out;
+        z-index: -1;
+      }
 
       &:hover {
         color: var(--el-color-primary);
-        background-color: var(--el-color-primary-light-9);
-        transform: rotate(180deg);
+        transform: rotate(180deg) scale(1.1);
+
+        &::before {
+          width: 200%;
+          height: 200%;
+        }
       }
 
       &:active {
-        transform: scale(0.95) rotate(180deg);
+        transform: rotate(180deg) scale(0.9);
       }
     }
 
@@ -133,33 +181,40 @@ const handleCommand = (command: string) => {
           font-weight: normal;
           font-size: 14px;
           position: relative;
-          transition: all 0.3s ease;
-          
+          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
           &.is-link {
             color: #666;
             &:hover {
               color: var(--el-color-primary);
-              transform: translateY(-1px);
+              transform: translateY(-2px);
+              text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
 
             &::after {
-              content: '';
+              content: "";
               position: absolute;
               bottom: -2px;
               left: 0;
               width: 100%;
-              height: 1px;
-              background-color: var(--el-color-primary);
+              height: 2px;
+              background: linear-gradient(
+                90deg,
+                var(--el-color-primary),
+                var(--el-color-success)
+              );
               transform: scaleX(0);
-              transition: transform 0.3s ease;
+              transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+              transform-origin: right;
             }
 
             &:hover::after {
               transform: scaleX(1);
+              transform-origin: left;
             }
           }
         }
-        
+
         &:last-child {
           .el-breadcrumb__inner {
             color: #333;
@@ -169,12 +224,12 @@ const handleCommand = (command: string) => {
 
         .el-breadcrumb__separator {
           color: #999;
-          transition: transform 0.3s ease;
+          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         &:hover {
           .el-breadcrumb__separator {
-            transform: scale(1.2);
+            transform: scale(1.4) rotate(360deg);
           }
         }
       }
@@ -186,92 +241,144 @@ const handleCommand = (command: string) => {
     align-items: center;
 
     .user-dropdown {
+      border-radius: 16px;
       display: flex;
       align-items: center;
-      padding: 4px 8px;
-      border-radius: 6px;
+      padding: 6px 12px;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      transform-origin: center;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background: transparent;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: #f5f5f5;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.4s ease-out,
+          height 0.4s ease-out;
+        z-index: -1;
+      }
 
       &:hover {
-        background-color: #f5f5f5;
-        transform: translateY(-1px);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        &::before {
+          width: 300%;
+          height: 300%;
+        }
+
+        .el-avatar {
+          transform: rotate(360deg) scale(1.1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .username {
+          color: var(--el-color-primary);
+          transform: translateX(4px);
+        }
+
+        .el-icon {
+          transform: rotate(180deg) scale(1.2);
+          color: var(--el-color-primary);
+        }
       }
 
       &:active {
-        transform: scale(0.98) translateY(-1px);
+        transform: translateY(-1px);
       }
 
       .el-avatar {
         border: 2px solid #fff;
         background: var(--el-color-primary);
-        transition: all 0.3s ease;
-        transform-origin: center;
-
-        &:hover {
-          transform: rotate(360deg);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       }
 
       .username {
-        margin: 0 8px;
+        margin: 0 10px;
         font-size: 14px;
         color: #333;
-        transition: all 0.3s ease;
-
-        &:hover {
-          color: var(--el-color-primary);
-        }
+        font-weight: 500;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
 
       .el-icon {
         font-size: 12px;
         color: #999;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      &:hover .el-icon {
-        transform: rotate(180deg);
-        color: var(--el-color-primary);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
     }
   }
 }
 
 :deep(.el-dropdown-menu) {
+  border-radius: 16px;
   border: none;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  padding: 4px;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &.el-popper {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 6px;
+  transform-origin: top;
+  animation: dropdownIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   .el-dropdown-menu__item {
-    padding: 8px 16px;
-    border-radius: 4px;
-    margin: 0;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin: 2px 0;
     font-size: 14px;
     color: #333;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-origin: left;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: var(--el-color-danger-light-9);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition:
+        width 0.4s ease-out,
+        height 0.4s ease-out;
+      z-index: -1;
+    }
 
     &:hover {
-      background-color: #f5f5f5;
       color: var(--el-color-danger);
-      transform: scale(1.02);
+      padding-left: 28px;
+      transform: scale(1.05);
+
+      &::before {
+        width: 300%;
+        height: 300%;
+      }
     }
 
     &:active {
-      transform: scale(0.98);
+      transform: scale(0.95);
     }
+  }
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -279,7 +386,7 @@ const handleCommand = (command: string) => {
   .header {
     padding: 0 12px;
   }
-  
+
   .username {
     display: none;
   }
