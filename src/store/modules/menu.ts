@@ -28,6 +28,7 @@ export const useMenuStore = defineStore(
 
         // 根据用户ID获取菜单
         const fetchUserMenus = async (userId: string) => {
+            console.log('fetchUserMenus', userId);
             try {
                 loading.value = true;
                 error.value = null;
