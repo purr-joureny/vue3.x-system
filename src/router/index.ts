@@ -8,9 +8,18 @@ const routes: RouteRecordRaw[] = [
     {
         path: '/login',
         name: 'Login',
-        component: () => import('@/views/login.vue'),
+        component: () => import('@/views/auth/login.vue'),
         meta: {
             title: '登录',
+            requiresAuth: false
+        }
+    },
+    {
+        path: '/register',
+        name: 'Register',
+        component: () => import('@/views/auth/register.vue'),
+        meta: {
+            title: '注册',
             requiresAuth: false
         }
     },
@@ -22,7 +31,7 @@ const routes: RouteRecordRaw[] = [
             {
                 path: 'home',
                 name: 'Home',
-                component: () => import('@/views/home.vue'),
+                component: () => import('@/views/dashboard/home.vue'),
                 meta: {
                     title: '首页',
                     requiresAuth: true
@@ -100,14 +109,13 @@ const routes: RouteRecordRaw[] = [
         ]
     },
     {
-        path: '/register',
-        name: 'Register',
-        component: () => import('@/views/register.vue')
-    },
-    {
         path: '/:catchAll(.*)',
         name: 'NotFound',
-        component: () => import('@/views/not-found.vue')
+        component: () => import('@/views/error/not-found.vue'),
+        meta: {
+            title: '404',
+            requiresAuth: false
+        }
     }
 ];
 

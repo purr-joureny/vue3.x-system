@@ -129,38 +129,77 @@ const goToRegister = () => {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
 }
 
 .login-card {
-  width: 400px;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  animation: fadeIn 0.6s ease-out;
 }
 
-.login-card :deep(.el-card__header) {
-  padding: 20px;
-  text-align: center;
-  border-bottom: none;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .login-title {
   margin: 0;
-  font-size: 24px;
-  color: #409eff;
+  font-size: 28px;
+  color: #1a1a1a;
+  text-align: center;
+  font-weight: 600;
 }
 
 .login-subtitle {
-  margin: 10px 0 0;
+  margin: 8px 0 0;
+  color: #666;
+  text-align: center;
   font-size: 16px;
-  color: #606266;
+}
+
+:deep(.el-form-item) {
+  margin-bottom: 24px;
+}
+
+:deep(.el-input__wrapper) {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  height: 44px;
+}
+
+:deep(.el-input__inner) {
+  height: 44px;
+}
+
+:deep(.el-button) {
+  height: 44px;
+  font-size: 16px;
+  border-radius: 8px;
 }
 
 .login-button {
   width: 100%;
-  padding: 12px 0;
-  font-size: 16px;
-  border-radius: 4px;
+  margin-top: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  transition: transform 0.2s;
+}
+
+.login-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .remember-forgot {
@@ -173,22 +212,28 @@ const goToRegister = () => {
 .register-link {
   text-align: center;
   margin-top: 16px;
-  color: #606266;
+  color: #666;
 }
 
-:deep(.el-input__wrapper) {
-  padding: 1px 11px;
+:deep(.el-checkbox__label) {
+  color: #666;
 }
 
-:deep(.el-input__inner) {
-  height: 40px;
+:deep(.el-link) {
+  font-size: 14px;
 }
 
-:deep(.el-form-item__label) {
-  padding-bottom: 8px;
-}
-
-:deep(.el-card__body) {
-  padding: 30px;
+@media (max-width: 480px) {
+  .login-card {
+    margin: 20px;
+  }
+  
+  .login-title {
+    font-size: 24px;
+  }
+  
+  .login-subtitle {
+    font-size: 14px;
+  }
 }
 </style>

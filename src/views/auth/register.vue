@@ -111,21 +111,108 @@ const goToLogin = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
 }
 
 .register-card {
-  width: 400px;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .register-title {
-  text-align: center;
   margin: 0;
-  color: #409eff;
+  font-size: 28px;
+  color: #1a1a1a;
+  text-align: center;
+  font-weight: 600;
 }
 
-:deep(.el-form-item__content) {
-  justify-content: center;
+:deep(.el-form) {
+  padding: 20px;
+}
+
+:deep(.el-form-item) {
+  margin-bottom: 24px;
+}
+
+:deep(.el-input__wrapper) {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  height: 44px;
+}
+
+:deep(.el-input__inner) {
+  height: 44px;
+}
+
+:deep(.el-button) {
+  height: 44px;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-right: 12px;
+}
+
+:deep(.el-button--primary) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  transition: transform 0.2s;
+  min-width: 120px;
+}
+
+:deep(.el-button--primary:hover) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+:deep(.el-button--default) {
+  border: 1px solid #dcdfe6;
+  min-width: 120px;
+}
+
+:deep(.el-button--default:hover) {
+  border-color: #764ba2;
+  color: #764ba2;
+}
+
+:deep(.el-form-item__label) {
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+@media (max-width: 480px) {
+  .register-card {
+    margin: 20px;
+  }
+  
+  .register-title {
+    font-size: 24px;
+  }
+  
+  :deep(.el-form-item__label) {
+    font-size: 14px;
+  }
+  
+  :deep(.el-button) {
+    min-width: auto;
+    margin-bottom: 10px;
+  }
 }
 </style>
