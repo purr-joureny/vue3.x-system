@@ -1,4 +1,4 @@
-import { defineStore, type PiniaPluginContext } from 'pinia';
+import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import type { UserInfo } from '@/types/api';
 import { userApi } from '@/api/user';

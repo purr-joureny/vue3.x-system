@@ -1,6 +1,6 @@
-import { defineStore, type PiniaPluginContext } from 'pinia';
+import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import type { PersistenceOptions } from 'pinia-plugin-persistedstate';
+// import type { PersistenceOptions } from 'pinia-plugin-persistedstate';
 
 export const useAppStore = defineStore(
     'app',

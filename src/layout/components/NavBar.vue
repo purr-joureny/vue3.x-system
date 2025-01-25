@@ -62,7 +62,8 @@ const handleCommand = (command: string) => {
         <span class="user-dropdown">
           <el-avatar :size="32" :src="userStore.userInfo?.avatar">
             {{
-              userStore.userInfo?.nickname?.[0] || userStore.userInfo?.username?.[0]
+              userStore.userInfo?.nickname?.[0] ||
+              userStore.userInfo?.username?.[0]
             }}
           </el-avatar>
           <span class="username">{{
@@ -82,12 +83,12 @@ const handleCommand = (command: string) => {
 
 <style lang="scss" scoped>
 .header {
-  background-color: #fff;
+  // background-color: #ccc;
   border-bottom: 1px solid #e5e7eb;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 24px;
+  // padding: 0 24px;
 
   .left {
     display: flex;
