@@ -1,14 +1,14 @@
-import { createApp, type App as VueApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import pinia from './store'
+import { createApp, type App as VueApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import pinia from './store';
 
 // Import global styles
-import './assets/styles/reset.scss'
-import './styles/index.css'
+import './assets/styles/reset.scss';
+import './styles/index.css';
 
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css';
 
 const app: VueApp = createApp(App)
 

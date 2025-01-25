@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { Plus } from "@element-plus/icons-vue";
+import { ref } from 'vue';
+import { Plus } from '@element-plus/icons-vue';
 
 const uploadForm = ref({
-	title: "",
-	description: "",
-	cover: "",
-	videoFile: null as File | null,
+	title: '',
+	description: '',
+	cover: '',
+	videoFile: null as File | null
 });
 
 const handleUpload = () => {
 	// 实现视频上传逻辑
-	console.log("上传视频:", uploadForm.value);
+	console.log('上传视频:', uploadForm.value);
 };
 </script>
 
