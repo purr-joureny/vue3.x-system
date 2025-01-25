@@ -3,7 +3,7 @@
     <div class="welcome-section">
       <div class="welcome-content">
         <h1 class="welcome-title">
-          欢迎回来，{{ userStore.username }}
+          欢迎回来，{{ userStore.userInfo?.username }}
           <el-icon class="welcome-icon"><Sunny /></el-icon>
         </h1>
         <p class="welcome-subtitle">今天是个适合工作的好日子</p>

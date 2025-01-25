@@ -23,7 +23,10 @@
     "pinia": "^2.3.1",
     "pinia-plugin-persistedstate": "^4.2.0",
     "prettier": "^3.4.2",
+    "rollup": "^4.32.0",
     "sass": "^1.83.4",
+    "terser": "^5.37.0",
+    "vite-plugin-compression": "^0.5.1",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
