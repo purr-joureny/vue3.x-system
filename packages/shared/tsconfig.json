@@ -1,21 +1,45 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "declaration": true,
-    "outDir": "dist"
-  },
-  "include": ["src"]
+    // TypeScript编译器的配置选项
+    "compilerOptions": {
+        // 指定ECMAScript目标版本，这里设置为ES2020以支持较新的JavaScript特性
+        "target": "ES2020",
+        // 使用声明式字段初始化语法，确保class字段的正确性
+        "useDefineForClassFields": true,
+        // 指定生成的模块代码，ESNext表示使用最新的模块语法
+        "module": "ESNext",
+        // 指定需要包含的库文件，这些库文件会提供相应的类型定义
+        "lib": [
+            "ES2020", // ES2020标准库
+            "DOM", // DOM相关的类型定义
+            "DOM.Iterable" // 可迭代的DOM类型定义
+        ],
+        // 跳过声明文件的类型检查，提高编译速度
+        "skipLibCheck": true,
+        // 设置模块解析策略为bundler，适用于使用Vite等打包工具的项目
+        "moduleResolution": "bundler",
+        // 允许在导入语句中使用TypeScript文件扩展名
+        "allowImportingTsExtensions": true,
+        // 允许导入JSON模块
+        "resolveJsonModule": true,
+        // 确保每个文件都是一个模块，有助于tree-shaking
+        "isolatedModules": true,
+        // 不输出JavaScript文件，只做类型检查
+        "noEmit": true,
+        // 启用所有严格的类型检查选项
+        "strict": true,
+        // 报告未使用的局部变量错误
+        "noUnusedLocals": true,
+        // 报告未使用的参数错误
+        "noUnusedParameters": true,
+        // 防止switch语句中的case落空
+        "noFallthroughCasesInSwitch": true,
+        // 生成.d.ts声明文件
+        "declaration": true,
+        // 指定输出目录为dist
+        "outDir": "dist"
+    },
+    // 指定要包含的源文件目录
+    "include": [
+        "src"
+    ]
 }

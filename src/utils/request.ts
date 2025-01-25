@@ -1,4 +1,4 @@
-import { createRequest, Request } from '@vue3-system/axios';
+import { createRequest, Request } from '@dev-jury/axios';
 import { ElMessage } from 'element-plus';
 import router from '@/router';
 

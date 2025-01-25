@@ -1,40 +1,40 @@
 {
-  "name": "vue3.x-bili-system",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "pnpm run -r build && vite",
-    "build": "pnpm run -r build && vue-tsc -b && vite build",
-    "build:test": "pnpm run -r build && vue-tsc -b && vite build --mode test",
-    "build:prod": "pnpm run -r build && vue-tsc -b && vite build --mode production",
-    "preview": "vite preview",
-    "preview:test": "vite preview --mode test",
-    "preview:prod": "vite preview --mode production"
-  },
-  "dependencies": {
-    "@element-plus/icons-vue": "^2.3.1",
-    "@vue3-system/axios": "workspace:*",
-    "@vue3-system/shared": "workspace:*",
-    "echarts": "^5.6.0",
-    "element-plus": "^2.9.3",
-    "eslint": "^9.18.0",
-    "nprogress": "^0.2.0",
-    "pinia": "^2.3.1",
-    "pinia-plugin-persistedstate": "^4.2.0",
-    "prettier": "^3.4.2",
-    "sass": "^1.83.4",
-    "vue": "^3.5.13",
-    "vue-echarts": "^7.0.3",
-    "vue-router": "^4.5.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.9",
-    "@types/nprogress": "^0.2.3",
-    "@vitejs/plugin-vue": "^5.2.1",
-    "@vue/tsconfig": "^0.7.0",
-    "typescript": "~5.6.2",
-    "vite": "^6.0.5",
-    "vue-tsc": "^2.2.0"
-  }
+    "name": "vue3.x-bili-system",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "pnpm run -r build && vite",
+        "build": "pnpm run -r build && vue-tsc -b && vite build",
+        "build:test": "pnpm run -r build && vue-tsc -b && vite build --mode test",
+        "build:prod": "pnpm run -r build && vue-tsc -b && vite build --mode production",
+        "preview": "vite preview",
+        "preview:test": "vite preview --mode test",
+        "preview:prod": "vite preview --mode production"
+    },
+    "dependencies": {
+        "@dev-jury/axios": "workspace:*",
+        "@dev-jury/shared": "workspace:*",
+        "@element-plus/icons-vue": "^2.3.1",
+        "echarts": "^5.6.0",
+        "element-plus": "^2.9.3",
+        "eslint": "^9.18.0",
+        "nprogress": "^0.2.0",
+        "pinia": "^2.3.1",
+        "pinia-plugin-persistedstate": "^4.2.0",
+        "prettier": "^3.4.2",
+        "sass": "^1.83.4",
+        "vue": "^3.5.13",
+        "vue-echarts": "^7.0.3",
+        "vue-router": "^4.5.0"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.10",
+        "@types/nprogress": "^0.2.3",
+        "@vitejs/plugin-vue": "^5.2.1",
+        "@vue/tsconfig": "^0.7.0",
+        "typescript": "~5.6.2",
+        "vite": "^6.0.5",
+        "vue-tsc": "^2.2.0"
+    }
 }

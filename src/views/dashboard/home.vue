@@ -9,11 +9,7 @@ import {
 } from "@element-plus/icons-vue";
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
-import {
-  LineChart,
-  BarChart,
-  PieChart
-} from "echarts/charts";
+import { LineChart, BarChart, PieChart } from "echarts/charts";
 import {
   GridComponent,
   TooltipComponent,
@@ -21,7 +17,6 @@ import {
   TitleComponent,
 } from "echarts/components";
 import VChart from "vue-echarts";
-import type { ECOption } from "vue-echarts";
 
 use([
   CanvasRenderer,
@@ -45,163 +40,166 @@ const statistics = ref({
 });
 
 // 趋势图表配置
-const trendChartOption = ref<ECOption>({
+const trendChartOption = ref<any>({
   title: {
-    text: '近7天数据趋势',
-    left: 'center',
+    text: "近7天数据趋势",
+    left: "center",
     top: 0,
     textStyle: {
-      color: '#1a1a1a',
+      color: "#1a1a1a",
       fontSize: 16,
-      fontWeight: 'normal'
-    }
+      fontWeight: "normal",
+    },
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {
-      type: 'shadow'
-    }
+      type: "shadow",
+    },
   },
   legend: {
-    bottom: '0',
-    data: ['播放量', '点赞数', '评论数']
+    bottom: "0",
+    data: ["播放量", "点赞数", "评论数"],
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '15%',
-    top: '15%',
-    containLabel: true
+    left: "3%",
+    right: "4%",
+    bottom: "15%",
+    top: "15%",
+    containLabel: true,
   },
   xAxis: {
-    type: 'category',
-    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+    type: "category",
+    data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
     axisLine: {
       lineStyle: {
-        color: '#ddd'
-      }
-    }
+        color: "#ddd",
+      },
+    },
   },
   yAxis: {
-    type: 'value',
+    type: "value",
     axisLine: {
-      show: false
+      show: false,
     },
     splitLine: {
       lineStyle: {
-        color: '#f0f0f0'
-      }
-    }
+        color: "#f0f0f0",
+      },
+    },
   },
   series: [
     {
-      name: '播放量',
-      type: 'line',
+      name: "播放量",
+      type: "line",
       smooth: true,
       data: [820, 932, 901, 934, 1290, 1330, 1320],
       itemStyle: {
-        color: '#3b82f6'
+        color: "#3b82f6",
       },
       areaStyle: {
         color: {
-          type: 'linear',
+          type: "linear",
           x: 0,
           y: 0,
           x2: 0,
           y2: 1,
-          colorStops: [{
-            offset: 0,
-            color: 'rgba(59,130,246,0.2)'
-          }, {
-            offset: 1,
-            color: 'rgba(59,130,246,0.01)'
-          }]
-        }
-      }
+          colorStops: [
+            {
+              offset: 0,
+              color: "rgba(59,130,246,0.2)",
+            },
+            {
+              offset: 1,
+              color: "rgba(59,130,246,0.01)",
+            },
+          ],
+        },
+      },
     },
     {
-      name: '点赞数',
-      type: 'line',
+      name: "点赞数",
+      type: "line",
       smooth: true,
       data: [320, 332, 301, 334, 390, 330, 320],
       itemStyle: {
-        color: '#7c3aed'
-      }
+        color: "#7c3aed",
+      },
     },
     {
-      name: '评论数',
-      type: 'line',
+      name: "评论数",
+      type: "line",
       smooth: true,
       data: [150, 232, 201, 154, 190, 330, 410],
       itemStyle: {
-        color: '#059669'
-      }
-    }
-  ]
+        color: "#059669",
+      },
+    },
+  ],
 });
 
 // 内容分布图表配置
-const distributionChartOption = ref<ECOption>({
+const distributionChartOption = ref<any>({
   title: {
-    text: '内容分布',
-    left: 'center',
+    text: "内容分布",
+    left: "center",
     top: 0,
     textStyle: {
-      color: '#1a1a1a',
+      color: "#1a1a1a",
       fontSize: 16,
-      fontWeight: 'normal'
-    }
+      fontWeight: "normal",
+    },
   },
   tooltip: {
-    trigger: 'item'
+    trigger: "item",
   },
   legend: {
-    orient: 'horizontal',
-    bottom: '0'
+    orient: "horizontal",
+    bottom: "0",
   },
   series: [
     {
-      name: '视频分类',
-      type: 'pie',
-      radius: ['40%', '70%'],
-      center: ['50%', '50%'],
+      name: "视频分类",
+      type: "pie",
+      radius: ["40%", "70%"],
+      center: ["50%", "50%"],
       avoidLabelOverlap: false,
       itemStyle: {
         borderRadius: 10,
-        borderColor: '#fff',
-        borderWidth: 2
+        borderColor: "#fff",
+        borderWidth: 2,
       },
       label: {
         show: false,
-        position: 'center'
+        position: "center",
       },
       emphasis: {
         label: {
           show: true,
           fontSize: 20,
-          fontWeight: 'bold'
-        }
+          fontWeight: "bold",
+        },
       },
       labelLine: {
-        show: false
+        show: false,
       },
       data: [
-        { value: 1048, name: '教育' },
-        { value: 735, name: '娱乐' },
-        { value: 580, name: '科技' },
-        { value: 484, name: '游戏' },
-        { value: 300, name: '其他' }
-      ]
-    }
-  ]
+        { value: 1048, name: "教育" },
+        { value: 735, name: "娱乐" },
+        { value: 580, name: "科技" },
+        { value: 484, name: "游戏" },
+        { value: 300, name: "其他" },
+      ],
+    },
+  ],
 });
 
 // 待办事项数据
 const todoList = ref([
-  { title: '审核新上传的视频内容', date: '今天 14:00' },
-  { title: '更新系统公告', date: '今天 16:00' },
-  { title: '处理用户反馈', date: '明天 10:00' },
-  { title: '数据周报整理', date: '周五 18:00' }
+  { title: "审核新上传的视频内容", date: "今天 14:00" },
+  { title: "更新系统公告", date: "今天 16:00" },
+  { title: "处理用户反馈", date: "明天 10:00" },
+  { title: "数据周报整理", date: "周五 18:00" },
 ]);
 </script>
 
@@ -275,7 +273,11 @@ const todoList = ref([
       </el-col>
       <el-col :span="8">
         <el-card class="chart-card">
-          <v-chart class="distribution-chart" :option="distributionChartOption" autoresize />
+          <v-chart
+            class="distribution-chart"
+            :option="distributionChartOption"
+            autoresize
+          />
         </el-card>
       </el-col>
     </el-row>
@@ -290,7 +292,11 @@ const todoList = ref([
             </div>
           </template>
           <ul class="todo-list">
-            <li v-for="(item, index) in todoList" :key="index" class="todo-item">
+            <li
+              v-for="(item, index) in todoList"
+              :key="index"
+              class="todo-item"
+            >
               <div class="todo-title">{{ item.title }}</div>
               <div class="todo-date">{{ item.date }}</div>
             </li>
@@ -411,7 +417,9 @@ const todoList = ref([
   border-radius: 16px;
   border: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 :deep(.el-card:hover) {
@@ -472,19 +480,19 @@ const todoList = ref([
   .home-container {
     padding: 16px;
   }
-  
+
   .welcome-section {
     padding: 24px;
   }
-  
+
   .welcome-section h2 {
     font-size: 24px;
   }
-  
+
   .statistics-cards :deep(.el-col) {
     margin-bottom: 16px;
   }
-  
+
   .value {
     font-size: 20px;
   }

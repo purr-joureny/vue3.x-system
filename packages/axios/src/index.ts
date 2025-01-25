@@ -14,7 +14,7 @@ export interface ResponseData<T = any> {
 
 export class Request {
     private instance: AxiosInstance;
-    private config: RequestConfig;
+    public config: RequestConfig;
 
     constructor(config: RequestConfig) {
         this.config = config;

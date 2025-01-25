@@ -1,10 +1,10 @@
-import { createRequest } from '@vue3-system/axios';
-import type { ResponseData } from '@vue3-system/axios';
+import { createRequest } from '@dev-jury/axios';
+import type { ResponseData } from '@dev-jury/axios';
 
 // 获取baseURL
 const getBaseURL = () => {
     try {
-        return typeof import.meta !== 'undefined' ? import.meta.env.VITE_API_BASE_URL : process.env.VITE_API_BASE_URL;
+        return import.meta.env.VITE_API_BASE_URL || '';
     } catch {
         return '';
     }

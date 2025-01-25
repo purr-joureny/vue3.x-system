@@ -1,20 +1,19 @@
 {
-  "name": "@vue3-system/shared",
-  "version": "1.0.0",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "dev": "tsup src/index.ts --format cjs,esm --dts --watch"
-  },
-  "dependencies": {
-    "@vue3-system/axios": "workspace:*"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.9",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.3",
-    "vite": "^6.0.5"
-  }
+    "name": "@dev-jury/shared",
+    "version": "1.0.0",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsup src/index.ts --format cjs,esm --dts",
+        "dev": "tsup src/index.ts --format cjs,esm --dts --watch"
+    },
+    "dependencies": {
+        "@dev-jury/axios": "workspace:*"
+    },
+    "devDependencies": {
+        "tsup": "^8.0.1",
+        "typescript": "^5.3.3",
+        "vite": "^6.0.5"
+    }
 }
