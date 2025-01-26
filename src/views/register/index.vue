@@ -1,3 +1,85 @@
+<script setup lang="ts">
+import { ref, reactive } from "vue";
+import { useRouter } from "vue-router";
+import { ElMessage } from "element-plus";
+import { User, Lock, Message, Monitor } from "@element-plus/icons-vue";
+
+const router = useRouter();
+const loading = ref(false);
+const registerFormRef = ref();
+
+const registerForm = reactive({
+	username: "",
+	email: "",
+	password: "",
+	confirmPassword: "",
+});
+
+const validatePass = (rule: any, value: string, callback: any) => {
+	if (value === "") {
+		callback(new Error("请再次输入密码"));
+	} else if (value !== registerForm.password) {
+		callback(new Error("两次输入密码不一致"));
+	} else {
+		callback();
+	}
+};
+
+const registerRules = {
+	username: [
+		{ required: true, message: "请输入用户名", trigger: "blur" },
+		{
+			min: 3,
+			max: 20,
+			message: "用户名长度应在3-20个字符之间",
+			trigger: "blur",
+		},
+	],
+	email: [
+		{ required: true, message: "请输入邮箱地址", trigger: "blur" },
+		{ type: "email", message: "请输入正确的邮箱地址", trigger: "blur" },
+	],
+	password: [
+		{ required: true, message: "请输入密码", trigger: "blur" },
+		{ min: 6, max: 20, message: "密码长度应在6-20个字符之间", trigger: "blur" },
+	],
+	confirmPassword: [
+		{ required: true, message: "请再次输入密码", trigger: "blur" },
+		{ validator: validatePass, trigger: "blur" },
+	],
+};
+
+const handleRegister = async () => {
+	if (!registerFormRef.value) return;
+
+	try {
+		await registerFormRef.value.validate();
+		loading.value = true;
+
+		// 模拟注册请求
+		setTimeout(() => {
+			ElMessage.success("注册成功");
+			router.push("/login");
+			loading.value = false;
+		}, 1500);
+	} catch (error) {
+		console.error("表单验证失败:", error);
+	}
+};
+
+const goToLogin = () => {
+	router.push("/login");
+};
+
+const showTerms = () => {
+	ElMessage.info("服务条款即将上线");
+};
+
+const showPrivacy = () => {
+	ElMessage.info("隐私政策即将上线");
+};
+</script>
+
 <template>
 	<div class="register-container">
 		<div class="register-background">
@@ -83,88 +165,6 @@
 		</el-card>
 	</div>
 </template>
-
-<script setup lang="ts">
-import { ref, reactive } from "vue";
-import { useRouter } from "vue-router";
-import { ElMessage } from "element-plus";
-import { User, Lock, Message, Monitor } from "@element-plus/icons-vue";
-
-const router = useRouter();
-const loading = ref(false);
-const registerFormRef = ref();
-
-const registerForm = reactive({
-	username: "",
-	email: "",
-	password: "",
-	confirmPassword: "",
-});
-
-const validatePass = (rule: any, value: string, callback: any) => {
-	if (value === "") {
-		callback(new Error("请再次输入密码"));
-	} else if (value !== registerForm.password) {
-		callback(new Error("两次输入密码不一致"));
-	} else {
-		callback();
-	}
-};
-
-const registerRules = {
-	username: [
-		{ required: true, message: "请输入用户名", trigger: "blur" },
-		{
-			min: 3,
-			max: 20,
-			message: "用户名长度应在3-20个字符之间",
-			trigger: "blur",
-		},
-	],
-	email: [
-		{ required: true, message: "请输入邮箱地址", trigger: "blur" },
-		{ type: "email", message: "请输入正确的邮箱地址", trigger: "blur" },
-	],
-	password: [
-		{ required: true, message: "请输入密码", trigger: "blur" },
-		{ min: 6, max: 20, message: "密码长度应在6-20个字符之间", trigger: "blur" },
-	],
-	confirmPassword: [
-		{ required: true, message: "请再次输入密码", trigger: "blur" },
-		{ validator: validatePass, trigger: "blur" },
-	],
-};
-
-const handleRegister = async () => {
-	if (!registerFormRef.value) return;
-
-	try {
-		await registerFormRef.value.validate();
-		loading.value = true;
-
-		// 模拟注册请求
-		setTimeout(() => {
-			ElMessage.success("注册成功");
-			router.push("/login");
-			loading.value = false;
-		}, 1500);
-	} catch (error) {
-		console.error("表单验证失败:", error);
-	}
-};
-
-const goToLogin = () => {
-	router.push("/login");
-};
-
-const showTerms = () => {
-	ElMessage.info("服务条款即将上线");
-};
-
-const showPrivacy = () => {
-	ElMessage.info("隐私政策即将上线");
-};
-</script>
 
 <style scoped>
 @import "@/styles/register.css";

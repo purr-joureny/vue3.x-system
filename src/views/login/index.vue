@@ -1,69 +1,3 @@
-<template>
-	<div class="login-container">
-		<div class="login-background">
-			<div class="circle circle-1"></div>
-			<div class="circle circle-2"></div>
-			<div class="circle circle-3"></div>
-		</div>
-
-		<el-card class="login-card" :body-style="{ padding: 0 }">
-			<div class="login-header">
-				<div class="brand-logo">
-					<el-icon class="logo-icon"><Monitor /></el-icon>
-				</div>
-				<h1 class="login-title">欢迎回来</h1>
-				<p class="login-subtitle">登录您的账户继续访问</p>
-			</div>
-
-			<div class="login-form">
-				<el-form
-					ref="loginFormRef"
-					:model="loginForm"
-					:rules="loginRules"
-					label-position="top"
-				>
-					<el-form-item label="用户名" prop="username">
-						<el-input
-							v-model="loginForm.username"
-							placeholder="请输入用户名"
-							:prefix-icon="User"
-						/>
-					</el-form-item>
-
-					<el-form-item label="密码" prop="password">
-						<el-input
-							v-model="loginForm.password"
-							type="password"
-							placeholder="请输入密码"
-							:prefix-icon="Lock"
-							show-password
-						/>
-					</el-form-item>
-
-					<div class="remember-forgot">
-						<el-checkbox v-model="loginForm.remember">记住我</el-checkbox>
-						<a href="#" class="forgot-password">忘记密码？</a>
-					</div>
-
-					<el-button
-						type="primary"
-						:loading="loading"
-						class="login-button"
-						@click="handleLogin"
-					>
-						<span class="login-text">登 录</span>
-					</el-button>
-				</el-form>
-
-				<div class="register-link">
-					还没有账户？
-					<el-link type="primary" @click="goToRegister">立即注册</el-link>
-				</div>
-			</div>
-		</el-card>
-	</div>
-</template>
-
 <script setup lang="ts">
 import { ref, reactive, onMounted } from "vue";
 import { useRouter } from "vue-router";
@@ -139,6 +73,72 @@ const goToRegister = () => {
 	router.push("/register");
 };
 </script>
+
+<template>
+	<div class="login-container">
+		<div class="login-background">
+			<div class="circle circle-1"></div>
+			<div class="circle circle-2"></div>
+			<div class="circle circle-3"></div>
+		</div>
+
+		<el-card class="login-card" :body-style="{ padding: 0 }">
+			<div class="login-header">
+				<div class="brand-logo">
+					<el-icon class="logo-icon"><Monitor /></el-icon>
+				</div>
+				<h1 class="login-title">欢迎回来</h1>
+				<p class="login-subtitle">登录您的账户继续访问</p>
+			</div>
+
+			<div class="login-form">
+				<el-form
+					ref="loginFormRef"
+					:model="loginForm"
+					:rules="loginRules"
+					label-position="top"
+				>
+					<el-form-item label="用户名" prop="username">
+						<el-input
+							v-model="loginForm.username"
+							placeholder="请输入用户名"
+							:prefix-icon="User"
+						/>
+					</el-form-item>
+
+					<el-form-item label="密码" prop="password">
+						<el-input
+							v-model="loginForm.password"
+							type="password"
+							placeholder="请输入密码"
+							:prefix-icon="Lock"
+							show-password
+						/>
+					</el-form-item>
+
+					<div class="remember-forgot">
+						<el-checkbox v-model="loginForm.remember">记住我</el-checkbox>
+						<a href="#" class="forgot-password">忘记密码？</a>
+					</div>
+
+					<el-button
+						type="primary"
+						:loading="loading"
+						class="login-button"
+						@click="handleLogin"
+					>
+						<span class="login-text">登 录</span>
+					</el-button>
+				</el-form>
+
+				<div class="register-link">
+					还没有账户？
+					<el-link type="primary" @click="goToRegister">立即注册</el-link>
+				</div>
+			</div>
+		</el-card>
+	</div>
+</template>
 
 <style scoped>
 @import "@/styles/login.css";

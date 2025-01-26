@@ -1,148 +1,3 @@
-<template>
-	<div class="home-container">
-		<div class="welcome-section">
-			<div class="welcome-content">
-				<h1 class="welcome-title">
-					欢迎回来，{{ userStore.userInfo?.username }}
-					<el-icon class="welcome-icon"><Sunny /></el-icon>
-				</h1>
-				<p class="welcome-subtitle">今天是个适合工作的好日子</p>
-			</div>
-			<div class="quick-actions">
-				<el-button type="primary" class="action-button" @click="handleUpload">
-					<el-icon><Upload /></el-icon>上传视频
-				</el-button>
-				<el-button type="success" class="action-button" @click="handleViewData">
-					<el-icon><DataLine /></el-icon>查看数据
-				</el-button>
-			</div>
-		</div>
-
-		<div class="stats-section">
-			<el-row :gutter="20">
-				<el-col :xs="24" :sm="12" :md="6">
-					<div class="stats-card">
-						<div class="stats-icon">
-							<el-icon><VideoCamera /></el-icon>
-						</div>
-						<div class="stats-info">
-							<div class="stats-label">视频总数</div>
-							<div class="stats-value">
-								{{ formatNumber(statistics.totalVideos) }}
-							</div>
-							<div class="stats-trend up">
-								<el-icon><CaretTop /></el-icon>
-								+{{ statistics.videoGrowth }}%
-							</div>
-						</div>
-					</div>
-				</el-col>
-				<el-col :xs="24" :sm="12" :md="6">
-					<div class="stats-card">
-						<div class="stats-icon">
-							<el-icon><View /></el-icon>
-						</div>
-						<div class="stats-info">
-							<div class="stats-label">总播放量</div>
-							<div class="stats-value">
-								{{ formatNumber(statistics.totalViews) }}
-							</div>
-							<div class="stats-trend up">
-								<el-icon><CaretTop /></el-icon>
-								+{{ statistics.viewGrowth }}%
-							</div>
-						</div>
-					</div>
-				</el-col>
-				<el-col :xs="24" :sm="12" :md="6">
-					<div class="stats-card">
-						<div class="stats-icon">
-							<el-icon><User /></el-icon>
-						</div>
-						<div class="stats-info">
-							<div class="stats-label">活跃用户</div>
-							<div class="stats-value">
-								{{ formatNumber(statistics.activeUsers) }}
-							</div>
-							<div class="stats-trend up">
-								<el-icon><CaretTop /></el-icon>
-								+{{ statistics.userGrowth }}%
-							</div>
-						</div>
-					</div>
-				</el-col>
-				<el-col :xs="24" :sm="12" :md="6">
-					<div class="stats-card">
-						<div class="stats-icon">
-							<el-icon><Timer /></el-icon>
-						</div>
-						<div class="stats-info">
-							<div class="stats-label">平均观看时长</div>
-							<div class="stats-value">{{ statistics.avgWatchTime }}分钟</div>
-							<div class="stats-trend down">
-								<el-icon><CaretBottom /></el-icon>
-								-{{ statistics.timeGrowth }}%
-							</div>
-						</div>
-					</div>
-				</el-col>
-			</el-row>
-		</div>
-
-		<div class="charts-section">
-			<el-row :gutter="20">
-				<el-col :xs="24" :lg="16">
-					<div class="chart-card">
-						<div class="chart-header">
-							<h3>数据趋势</h3>
-							<el-radio-group v-model="timeRange" size="small">
-								<el-radio-button label="week">周</el-radio-button>
-								<el-radio-button label="month">月</el-radio-button>
-								<el-radio-button label="year">年</el-radio-button>
-							</el-radio-group>
-						</div>
-						<div ref="trendChartRef" class="chart-container"></div>
-					</div>
-				</el-col>
-				<el-col :xs="24" :lg="8">
-					<div class="chart-card">
-						<div class="chart-header">
-							<h3>用户分布</h3>
-						</div>
-						<div ref="pieChartRef" class="chart-container"></div>
-					</div>
-				</el-col>
-			</el-row>
-		</div>
-
-		<div class="quick-access">
-			<el-row :gutter="20">
-				<el-col :xs="24" :sm="8">
-					<div class="quick-card" @click="handleUserManagement">
-						<el-icon><UserFilled /></el-icon>
-						<h3>用户管理</h3>
-						<p>管理系统用户权限</p>
-					</div>
-				</el-col>
-				<el-col :xs="24" :sm="8">
-					<div class="quick-card" @click="handleContentManagement">
-						<el-icon><Document /></el-icon>
-						<h3>内容管理</h3>
-						<p>管理视频和文章内容</p>
-					</div>
-				</el-col>
-				<el-col :xs="24" :sm="8">
-					<div class="quick-card" @click="handleSystemSettings">
-						<el-icon><Setting /></el-icon>
-						<h3>系统设置</h3>
-						<p>配置系统参数</p>
-					</div>
-				</el-col>
-			</el-row>
-		</div>
-	</div>
-</template>
-
 <script setup lang="ts">
 import { ref, onMounted, watch } from "vue";
 import { useUserStore } from "@/store/modules/user";
@@ -317,6 +172,151 @@ const handleSystemSettings = () => {
 	// TODO: 跳转到系统设置页面
 };
 </script>
+
+<template>
+	<div class="home-container">
+		<div class="welcome-section">
+			<div class="welcome-content">
+				<h1 class="welcome-title">
+					欢迎回来，{{ userStore.userInfo?.username }}
+					<el-icon class="welcome-icon"><Sunny /></el-icon>
+				</h1>
+				<p class="welcome-subtitle">今天是个适合工作的好日子</p>
+			</div>
+			<div class="quick-actions">
+				<el-button type="primary" class="action-button" @click="handleUpload">
+					<el-icon><Upload /></el-icon>上传视频
+				</el-button>
+				<el-button type="success" class="action-button" @click="handleViewData">
+					<el-icon><DataLine /></el-icon>查看数据
+				</el-button>
+			</div>
+		</div>
+
+		<div class="stats-section">
+			<el-row :gutter="20">
+				<el-col :xs="24" :sm="12" :md="6">
+					<div class="stats-card">
+						<div class="stats-icon">
+							<el-icon><VideoCamera /></el-icon>
+						</div>
+						<div class="stats-info">
+							<div class="stats-label">视频总数</div>
+							<div class="stats-value">
+								{{ formatNumber(statistics.totalVideos) }}
+							</div>
+							<div class="stats-trend up">
+								<el-icon><CaretTop /></el-icon>
+								+{{ statistics.videoGrowth }}%
+							</div>
+						</div>
+					</div>
+				</el-col>
+				<el-col :xs="24" :sm="12" :md="6">
+					<div class="stats-card">
+						<div class="stats-icon">
+							<el-icon><View /></el-icon>
+						</div>
+						<div class="stats-info">
+							<div class="stats-label">总播放量</div>
+							<div class="stats-value">
+								{{ formatNumber(statistics.totalViews) }}
+							</div>
+							<div class="stats-trend up">
+								<el-icon><CaretTop /></el-icon>
+								+{{ statistics.viewGrowth }}%
+							</div>
+						</div>
+					</div>
+				</el-col>
+				<el-col :xs="24" :sm="12" :md="6">
+					<div class="stats-card">
+						<div class="stats-icon">
+							<el-icon><User /></el-icon>
+						</div>
+						<div class="stats-info">
+							<div class="stats-label">活跃用户</div>
+							<div class="stats-value">
+								{{ formatNumber(statistics.activeUsers) }}
+							</div>
+							<div class="stats-trend up">
+								<el-icon><CaretTop /></el-icon>
+								+{{ statistics.userGrowth }}%
+							</div>
+						</div>
+					</div>
+				</el-col>
+				<el-col :xs="24" :sm="12" :md="6">
+					<div class="stats-card">
+						<div class="stats-icon">
+							<el-icon><Timer /></el-icon>
+						</div>
+						<div class="stats-info">
+							<div class="stats-label">平均观看时长</div>
+							<div class="stats-value">{{ statistics.avgWatchTime }}分钟</div>
+							<div class="stats-trend down">
+								<el-icon><CaretBottom /></el-icon>
+								-{{ statistics.timeGrowth }}%
+							</div>
+						</div>
+					</div>
+				</el-col>
+			</el-row>
+		</div>
+
+		<div class="charts-section">
+			<el-row :gutter="20">
+				<el-col :xs="24" :lg="16">
+					<div class="chart-card">
+						<div class="chart-header">
+							<h3>数据趋势</h3>
+							<el-radio-group v-model="timeRange" size="small">
+								<el-radio-button label="week">周</el-radio-button>
+								<el-radio-button label="month">月</el-radio-button>
+								<el-radio-button label="year">年</el-radio-button>
+							</el-radio-group>
+						</div>
+						<div ref="trendChartRef" class="chart-container"></div>
+					</div>
+				</el-col>
+				<el-col :xs="24" :lg="8">
+					<div class="chart-card">
+						<div class="chart-header">
+							<h3>用户分布</h3>
+						</div>
+						<div ref="pieChartRef" class="chart-container"></div>
+					</div>
+				</el-col>
+			</el-row>
+		</div>
+
+		<div class="quick-access">
+			<el-row :gutter="20">
+				<el-col :xs="24" :sm="8">
+					<div class="quick-card" @click="handleUserManagement">
+						<el-icon><UserFilled /></el-icon>
+						<h3>用户管理</h3>
+						<p>管理系统用户权限</p>
+					</div>
+				</el-col>
+				<el-col :xs="24" :sm="8">
+					<div class="quick-card" @click="handleContentManagement">
+						<el-icon><Document /></el-icon>
+						<h3>内容管理</h3>
+						<p>管理视频和文章内容</p>
+					</div>
+				</el-col>
+				<el-col :xs="24" :sm="8">
+					<div class="quick-card" @click="handleSystemSettings">
+						<el-icon><Setting /></el-icon>
+						<h3>系统设置</h3>
+						<p>配置系统参数</p>
+					</div>
+				</el-col>
+			</el-row>
+		</div>
+	</div>
+</template>
 
 <style scoped>
 @import "@/styles/home.css";

@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
-import { useUserStore } from "@/store/modules/user";
-import { useLayoutStore } from "@/store/modules/layout";
-import { useMenuStore } from "@/store/modules/menu";
-import { useRoute } from "vue-router";
+import { computed, onMounted } from 'vue';
+import { useUserStore } from '@/store/modules/user';
+import { useLayoutStore } from '@/store/modules/layout';
+import { useMenuStore } from '@/store/modules/menu';
+import { useRoute } from 'vue-router';
 import {
 	HomeFilled,
 	VideoCamera,
 	Platform,
 	UserFilled,
 	Setting,
-} from "@element-plus/icons-vue";
+} from '@element-plus/icons-vue';
 
 // 图标映射
 const iconMap: Record<string, any> = {
@@ -121,7 +121,7 @@ const defaultOpeneds = computed(() => {
 	position: relative;
 
 	&::before {
-		content: "";
+		content: '';
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -270,7 +270,7 @@ const defaultOpeneds = computed(() => {
 	position: relative;
 
 	&::after {
-		content: "";
+		content: '';
 		position: absolute;
 		bottom: 0;
 		left: 0;
