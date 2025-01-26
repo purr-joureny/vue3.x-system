@@ -42,7 +42,7 @@ export class Request {
         this.instance.interceptors.request.use(
             (config: InternalAxiosRequestConfig) => {
                 // 从 localStorage 获取 token
-                const token = localStorage.getItem('token');
+                const token = window.localStorage.getItem('token');
                 if (token) {
                     // 添加 token 到请求头
                     config.headers['Authorization'] = `Bearer ${token}`;
