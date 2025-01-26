@@ -7,7 +7,7 @@ import viteCompression from 'vite-plugin-compression'
 export default defineConfig({
     plugins: [
         vue(),
-        // gzip 压缩
+        // gzip 压缩 
         // viteCompression({
         //     verbose: true,
         //     disable: false,
