@@ -4,6 +4,8 @@ import tsParser from '@typescript-eslint/parser'
 import tsPlugin from '@typescript-eslint/eslint-plugin'
 import vueParser from 'vue-eslint-parser'
 import vuePlugin from 'eslint-plugin-vue'
+import prettier from 'eslint-config-prettier'
+import prettierPlugin from 'eslint-plugin-prettier'
 
 export default [
     js.configs.recommended,
@@ -26,7 +28,9 @@ export default [
         },
         plugins: {
             '@typescript-eslint': tsPlugin,
-            vue: vuePlugin
+            vue: vuePlugin,
+            'eslint-plugin-prettier': prettierPlugin,
+            'eslint-config-prettier': prettier
         },
         rules: {
             'vue/multi-word-component-names': 'off',
