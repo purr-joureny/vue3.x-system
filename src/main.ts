@@ -15,6 +15,6 @@ const app: VueApp = createApp(App)
 // Use plugins
 app.component('v-chart', VChart);
 app.use(pinia)
-   .use(router)
-   .use(ElementPlus)
-   .mount('#app')
+    .use(router)
+    .use(ElementPlus)
+    .mount('#app')

@@ -3,13 +3,13 @@
 </script>
 
 <template>
-  <div class="user-container">
-    <router-view></router-view>
-  </div>
+	<div class="user-container">
+		<router-view></router-view>
+	</div>
 </template>
 
 <style lang="scss" scoped>
 .user-container {
-  min-height: 100%;
+	min-height: 100%;
 }
 </style>
