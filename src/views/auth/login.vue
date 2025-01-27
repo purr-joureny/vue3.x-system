@@ -19,8 +19,8 @@ const rememberMe = ref(appStore.rememberPassword);
 
 // 从 app store 获取保存的用户名
 const form = reactive<LoginParams>({
-	username: appStore.rememberedUsername || "",
-	password: "",
+	username: appStore.rememberedUsername || "admin",
+	password: "123456",
 });
 
 const rules = reactive<FormRules>({
