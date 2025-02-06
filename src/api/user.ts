@@ -1,5 +1,5 @@
 import { get, post } from '@/utils/request';
-import type { ApiResponse, LoginParams, LoginResult, RegisterParams, UserInfo } from '@/types/api';
+import type { ApiResponse, LoginParams, LoginResult, RegisterParams, UserInfo, WechatLoginResult } from '@/types/api';
 
 export const userApi = {
   // 登录
@@ -20,5 +20,10 @@ export const userApi = {
   // 退出登录
   logout() {
     return post<ApiResponse<null>>('/auth/logout');
+  },
+
+  // 微信登录
+  wechatLogin(qrCodeId: string) {
+    return post<ApiResponse<WechatLoginResult>>('/auth/wechat-login', { qrCodeId });
   }
 };

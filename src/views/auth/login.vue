@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
+import WechatLoginDialog from "@/components/WechatLoginDialog.vue";
 import type { FormInstance, FormRules } from "element-plus";
 import { ElMessage } from "element-plus";
-import { User, Lock } from "@element-plus/icons-vue";
+import { User, Lock, Position, ChatRound } from "@element-plus/icons-vue";
 import type { LoginParams } from "@/types/api";
 import { useUserStore } from "@/store/modules/user";
 import { useAppStore } from "@/store/modules/app";
@@ -64,6 +65,34 @@ const handleLogin = async () => {
 const goToRegister = () => {
 	router.push("/register");
 };
+
+// 微信登录对话框可见性
+const wechatLoginVisible = ref(false);
+
+const handleWechatLogin = () => {
+	wechatLoginVisible.value = true;
+};
+
+// 处理微信登录成功
+const handleWechatLoginSuccess = async () => {
+	try {
+		loading.value = true;
+		const result = await userStore.wechatLogin("1");
+
+		if (result.data.isNewUser) {
+			ElMessage.success("首次使用微信登录，欢迎加入我们！");
+		} else {
+			ElMessage.success("微信登录成功！");
+		}
+
+		router.push("/home");
+	} catch (error: any) {
+		console.error("WeChat login error:", error);
+		ElMessage.error(error.message || "微信登录失败，请重试");
+	} finally {
+		loading.value = false;
+	}
+};
 </script>
 
 <template>
@@ -112,6 +141,18 @@ const goToRegister = () => {
 						登录
 					</el-button>
 				</el-form-item>
+
+				<el-divider>
+					<span style="color: #666; font-size: 14px">其他登录方式</span>
+				</el-divider>
+
+				<div class="social-login">
+					<el-button class="wechat-button" @click="handleWechatLogin" text>
+						<el-icon class="wechat-icon"><ChatRound /></el-icon>
+						微信登录
+					</el-button>
+				</div>
+
 				<div class="register-link">
 					还没有账号？
 					<el-link type="primary" :underline="false" @click="goToRegister">
@@ -120,6 +161,10 @@ const goToRegister = () => {
 				</div>
 			</el-form>
 		</el-card>
+		<WechatLoginDialog
+			v-model:visible="wechatLoginVisible"
+			@login-success="handleWechatLoginSuccess"
+		/>
 	</div>
 </template>
 
@@ -235,5 +280,27 @@ const goToRegister = () => {
 	.login-subtitle {
 		font-size: 14px;
 	}
+}
+
+.social-login {
+	display: flex;
+	justify-content: center;
+	margin: 16px 0;
+}
+
+.wechat-button {
+	color: #3668dd;
+	font-size: 16px;
+	transition: all 0.3s ease;
+}
+
+.wechat-button:hover {
+	color: #3668dd;
+	transform: scale(1.05);
+}
+
+.wechat-icon {
+	margin-right: 8px;
+	font-size: 18px;
 }
 </style>

@@ -82,6 +82,19 @@ export const useUserStore = defineStore(
       roles.value = [];
     };
 
+    // 微信登录
+    const wechatLogin = async (qrCodeId: string) => {
+      try {
+        const response = await userApi.wechatLogin(qrCodeId);
+        const { token: newToken, userInfo: newUserInfo } = response.data.data;
+        setToken(newToken);
+        setUserInfo(newUserInfo);
+        return response.data;
+      } catch (error) {
+        throw error;
+      }
+    };
+
     return {
       userInfo,
       token,
@@ -89,6 +102,7 @@ export const useUserStore = defineStore(
       setUserInfo,
       setToken,
       login,
+      wechatLogin,
       getUserInfo,
       logout,
       resetState,
