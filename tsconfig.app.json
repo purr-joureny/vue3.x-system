@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/@vue/tsconfig/tsconfig.dom.json",
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
     "composite": true,
     "noEmit": true,

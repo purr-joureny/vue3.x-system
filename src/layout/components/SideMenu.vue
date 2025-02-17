@@ -296,7 +296,7 @@ const defaultOpeneds = computed(() => {
 				right: 0;
 				bottom: 0;
 				width: 3px;
-				background: #fff;
+				// background: #fff;
 				transform-origin: top;
 				animation: borderSlide 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 				box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
